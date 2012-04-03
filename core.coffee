@@ -34,5 +34,11 @@ class Core
   }
 	
   Array::shuffle = -> @sort -> 0.5 - Math.random()
-  
-  printSymbol: (symbol) -> console.log SYMBOLS[symbol]?.noob?.shuffle()?[0]
+
+  convertSymbol: (symbol, type = 'noob') -> SYMBOLS[symbol]?[type]?.shuffle()[0]
+
+  toLeet: (string) ->
+    newString = ''
+    for char in string
+      newString += @convertSymbol(char)
+    newString

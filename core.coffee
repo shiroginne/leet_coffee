@@ -37,8 +37,4 @@ class Core
 
   convertSymbol: (symbol, type = 'noob') -> SYMBOLS[symbol]?[type]?.shuffle()[0]
 
-  toLeet: (string) ->
-    newString = ''
-    for char in string
-      newString += @convertSymbol(char)
-    newString
+  toLeet: (string) -> (@convertSymbol(char) for char in string).join ''

@@ -33,7 +33,15 @@ class Core
               ".": {'noob': ["."], 'leet': ["."]}
   }
 	
-  Array::shuffle = -> @sort -> 0.5 - Math.random()
+  Array::shuffle = -> 
+    i = @length
+    return @ if i == 0
+
+    while --i
+      j = Math.floor(Math.random() * (i + 1))
+      [@[i], @[j]] = [@[j], @[i]]
+
+    @
 
   convertSymbol: (symbol, type = 'noob') -> SYMBOLS[symbol]?[type]?.shuffle()[0]
 
